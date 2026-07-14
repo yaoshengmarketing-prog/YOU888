@@ -1,0 +1,60 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { CATEGORIES, SITE } from '../../../consts';
+
+export async function getStaticPaths() {
+  const posts = (await getCollection('blog')).filter((p) => !p.data.draft);
+  return Object.keys(CATEGORIES).map((cat) => ({
+    params: { category: cat },
+    props: {
+      category: cat,
+      posts: posts
+        .filter((p) => p.data.category === cat)
+        .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()),
+    },
+  }));
+}
+
+const { category, posts } = Astro.props;
+const catName = CATEGORIES[category];
+const fmt = (d) => d.toISOString().slice(0, 10);
+---
+<Base title={`${catName}文章`} description={`YOU888 娛樂城「${catName}」分類的所有文章與教學。`} type="website">
+  <section style="background:linear-gradient(180deg,#fbf5e8,#f4ead2); padding:52px 0 36px">
+    <div class="container" style="text-align:center">
+      <p class="eyebrow">CATEGORY</p>
+      <h1 class="sec-title" style="font-size:40px">{catName}</h1>
+      <p style="margin:6px 0 0; color:#6b6252">共 {posts.length} 篇文章</p>
+    </div>
+  </section>
+
+  <div class="container" style="padding:36px 32px 8px">
+    <nav class="pill-cats" aria-label="文章分類">
+      <a href="/blog/" class="pill">全部</a>
+      {Object.entries(CATEGORIES).map(([slug, name]) => (
+        <a href={`/blog/categories/${slug}/`} class={`pill${slug === category ? ' active' : ''}`}>{name}</a>
+      ))}
+    </nav>
+  </div>
+
+  <div class="container" style="padding:0 32px 72px">
+    {posts.length === 0 ? (
+      <p style="text-align:center; color:#6b6252; padding:40px 0">這個分類還沒有文章，敬請期待。</p>
+    ) : (
+      <div class="post-grid">
+        {posts.map((p) => (
+          <a href={`/post/${p.slug}/`} class="post-card">
+            <div class="thumb">{p.data.cover && <img src={p.data.cover} alt={p.data.coverAlt ?? p.data.title} loading="lazy" />}</div>
+            <div class="body">
+              <span class="chip">{catName}</span>
+              <h3>{p.data.title}</h3>
+              <p>{p.data.description}</p>
+              <div class="post-meta"><time datetime={p.data.pubDate.toISOString()}>{fmt(p.data.pubDate)}</time><span>· {p.data.author}</span></div>
+            </div>
+          </a>
+        ))}
+      </div>
+    )}
+  </div>
+</Base>
