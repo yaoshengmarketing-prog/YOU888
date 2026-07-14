@@ -1,7 +1,7 @@
 import { defineCollection, z } from 'astro:content';
 
 // 每一篇文章的「欄位規格」。少填必填欄位在 build 時會直接報錯，
-// 所以 100、200 篇也不會亂 —— 每篇都被強制帶齊 SEO 需要的資料。
+// 所以 100、200、300 篇也不會亂 —— 每篇都被強制帶齊 SEO 需要的資料。
 const blog = defineCollection({
   type: 'content',
   schema: z.object({
@@ -9,10 +9,13 @@ const blog = defineCollection({
     description: z.string(),            // Meta Description
     category: z.enum([
       'platform-guide',
+      'register-account',
+      'app-mobile',
       'promotions',
-      'game-guide',
       'deposit-withdraw',
+      'game-guide',
       'security',
+      'customer-service',
     ]),
     tags: z.array(z.string()).default([]),
     pubDate: z.coerce.date(),          // 發佈日期

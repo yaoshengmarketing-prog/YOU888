@@ -1,4 +1,6 @@
 ---
+import '../styles/global.css';
+import SiteHeader from '../components/SiteHeader.astro';
 import { getCollection } from 'astro:content';
 import { CATEGORIES, SITE } from '../consts';
 
@@ -37,12 +39,6 @@ const canonical = SITE.url + '/';
   a{color:#9a6f2d;text-decoration:none}a:hover{color:#8a6420}
   .cinzel{font-family:Cinzel,serif}
   @keyframes you-mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-  .brand-txt{font-family:Cinzel,serif;font-weight:800;font-size:23px;letter-spacing:1.5px;background:linear-gradient(135deg,#c9a24a,#9a6f2d);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-  .nav-link{padding:10px 15px;border-radius:10px;font-size:15px;font-weight:500;color:#4a4033;white-space:nowrap;transition:all .18s}
-  .nav-link:hover{background:linear-gradient(135deg,rgba(232,197,131,.22),rgba(183,135,60,.14));color:#8a6420}
-  .btn-login:hover{background:rgba(183,135,60,.1)}
-  .btn-reg{padding:10px 22px;border-radius:10px;font-size:15px;font-weight:700;color:#fff;background:linear-gradient(135deg,#e8c583,#b7873c);box-shadow:0 4px 14px rgba(183,135,60,.4);transition:all .18s}
-  .btn-reg:hover{filter:brightness(1.06);transform:translateY(-1px);color:#fff}
   .hero-wrap{position:relative;width:100%;aspect-ratio:1920/700;border-radius:20px;overflow:hidden;box-shadow:0 18px 50px rgba(150,110,50,.22);border:1px solid rgba(200,160,80,.3);background:#f4ead2}
   .slide{position:absolute;inset:0;opacity:0;transition:opacity .6s;z-index:1}
   .slide.active{opacity:1;z-index:2}
@@ -61,35 +57,13 @@ const canonical = SITE.url + '/';
   .p-card:hover{transform:translateY(-5px);box-shadow:0 16px 34px rgba(150,110,50,.2);border-color:rgba(200,160,80,.55)}
   .p-card .th{aspect-ratio:16/9;overflow:hidden}.p-card .th img{width:100%;height:100%;object-fit:cover;display:block}
   .chip{align-self:flex-start;font-size:12px;font-weight:700;color:#7a5410;background:linear-gradient(135deg,#f3e0af,#cf9f4d);padding:4px 12px;border-radius:99px}
-  @media (max-width:900px){.nav-desktop{display:none!important}.cat-grid{grid-template-columns:repeat(2,1fr)!important}.service-grid{grid-template-columns:repeat(2,1fr)!important}.news-grid{grid-template-columns:1fr!important}h2{font-size:30px!important}}
+  @media (max-width:900px){.cat-grid{grid-template-columns:repeat(2,1fr)!important}.service-grid{grid-template-columns:repeat(2,1fr)!important}.news-grid{grid-template-columns:1fr!important}h2{font-size:30px!important}}
 </style>
 </head>
 <body>
 <div style="min-height:100vh">
 
-  <header style="position:sticky; top:0; z-index:50; background:rgba(255,255,255,.96); backdrop-filter:blur(8px); border-bottom:1px solid rgba(180,140,70,.18); box-shadow:0 2px 20px rgba(120,90,40,.06)">
-    <div style="max-width:1440px; margin:0 auto; padding:0 32px; height:76px; display:flex; align-items:center; gap:28px">
-      <a href="/" style="display:flex; align-items:center; gap:11px; flex:none; color:inherit">
-        <span style="width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg,#e8c583,#b7873c); display:flex; align-items:center; justify-content:center; box-shadow:0 3px 10px rgba(180,140,70,.35)">
-          <i style="width:15px; height:15px; border:2.5px solid #fff; border-radius:4px; transform:rotate(45deg); display:block"></i>
-        </span>
-        <span class="brand-txt">YOU888</span>
-      </a>
-      <nav class="nav-desktop" style="display:flex; align-items:center; gap:2px; flex:1; flex-wrap:nowrap; overflow-x:auto" aria-label="主選單">
-        <a href="/blog/categories/platform-guide/" class="nav-link">平台指南</a>
-        <a href="/blog/categories/promotions/" class="nav-link">優惠活動</a>
-        <a href="/blog/categories/game-guide/" class="nav-link">遊戲玩法</a>
-        <a href="/blog/categories/deposit-withdraw/" class="nav-link">存款與出金</a>
-        <a href="/blog/categories/security/" class="nav-link">安全查核</a>
-        <a href="/blog/" class="nav-link" style="font-weight:700;color:#8a6420">部落格</a>
-      </nav>
-      <div style="display:flex; align-items:center; gap:8px; flex:none; margin-left:auto">
-        <a href="#" class="btn-login" style="display:flex; align-items:center; gap:7px; padding:9px 16px; border-radius:10px; font-size:15px; font-weight:500; color:#4a4033"><i style="width:16px; height:16px; border:2px solid #8a6420; border-radius:50%; display:inline-block"></i>登入</a>
-        <span style="color:rgba(140,110,60,.35)">|</span>
-        <a href="#cta" class="btn-reg">註冊</a>
-      </div>
-    </div>
-  </header>
+  <SiteHeader />
 
   <section style="background:linear-gradient(180deg,#fbf5e8,#f4ead2)" aria-label="主視覺輪播">
     <div style="max-width:1440px; margin:0 auto; padding:28px 32px 24px">
@@ -131,7 +105,7 @@ const canonical = SITE.url + '/';
       <span style="width:60px; height:2px; background:linear-gradient(90deg,transparent,#c9a24a)"></span><span style="color:#8a6420">◆</span><span style="width:60px; height:2px; background:linear-gradient(90deg,#c9a24a,transparent)"></span>
     </div>
     <div class="cat-grid" style="display:grid; grid-template-columns:repeat(4,1fr); gap:20px">
-      {[['動','動作競技','ACTION'],['智','益智解謎','PUZZLE'],['策','策略經營','STRATEGY'],['閒','休閒小遊戲','CASUAL'],['戰','多人對戰','MULTIPLAYER'],['速','競速賽車','RACING'],['險','冒險探索','ADVENTURE'],['全','全部遊戲','ALL GAMES']].map(([g,zh,en]) => (
+      {[['體','體育投注','SPORTS'],['真','真人視訊','LIVE'],['電','電子遊戲','SLOTS'],['魚','捕魚遊戲','FISHING'],['棋','棋牌遊戲','POKER'],['彩','彩票遊戲','LOTTERY'],['競','電競投注','ESPORTS'],['全','全部遊戲','ALL GAMES']].map(([g,zh,en]) => (
         <a href="#" class="cat-tile">
           <span style="width:78px; height:78px; border-radius:20px; display:flex; align-items:center; justify-content:center; font-size:34px; font-weight:900; color:#7a5410; background:linear-gradient(135deg,#f3e0af,#cf9f4d); box-shadow:0 6px 16px rgba(183,135,60,.35),inset 0 1px 2px rgba(255,255,255,.6)">{g}</span>
           <span style="font-size:18px; font-weight:700; color:#3a3020">{zh}</span>
@@ -161,8 +135,8 @@ const canonical = SITE.url + '/';
         </a>
       ))}
     </div>
-    <div style="margin-top:36px">
-      <a href="/blog/" class="btn-reg" style="display:inline-block">看更多文章 ›</a>
+    <div style="margin-top:30px">
+      <a href="/blog/" style="display:inline-block; font-size:15px; font-weight:600; color:#9a6f2d; padding:8px 4px; border-bottom:1px solid rgba(154,111,45,.4)">查看全部文章 →</a>
     </div>
   </section>
 
@@ -174,7 +148,7 @@ const canonical = SITE.url + '/';
         <span style="width:60px; height:2px; background:linear-gradient(90deg,transparent,#b7873c)"></span><span style="color:#b7873c">◆</span><span style="width:60px; height:2px; background:linear-gradient(90deg,#b7873c,transparent)"></span>
       </div>
       <div class="service-grid" style="display:grid; grid-template-columns:repeat(4,1fr); gap:30px">
-        {[['1000+','海量遊戲任你玩','GAMES'],['週更','每週上新遊戲','WEEKLY UPDATE'],['全裝置','支援所有裝置','ALL DEVICES'],['24H','全年客服不打烊','SUPPORT']].map(([big,zh,en]) => (
+        {[['極速','快速出款免等待','FAST PAYOUT'],['加密','資金安全有保障','SECURE'],['全裝置','支援所有裝置','ALL DEVICES'],['24H','全年客服不打烊','SUPPORT']].map(([big,zh,en]) => (
           <div style="display:flex; flex-direction:column; align-items:center; gap:16px">
             <span class="cinzel" style="width:128px; height:128px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:radial-gradient(circle at 50% 40%,#2e3646,#1c2230); border:5px solid #cf9f4d; box-shadow:0 10px 26px rgba(40,50,70,.3),inset 0 0 20px rgba(0,0,0,.4); font-size:28px; font-weight:900; color:#f3e0af">{big}</span>
             <div><p style="font-size:18px; font-weight:700; color:#2c3644; margin:0 0 3px">{zh}</p><p class="cinzel" style="font-size:12px; letter-spacing:1.5px; color:#9fb0c2; margin:0">{en}</p></div>

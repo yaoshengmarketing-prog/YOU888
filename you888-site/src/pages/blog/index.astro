@@ -1,7 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
-import { CATEGORIES, SITE } from '../../consts';
+import { CATEGORIES, CATEGORY_ORDER, SITE } from '../../consts';
 
 const posts = (await getCollection('blog'))
   .filter((p) => !p.data.draft)
@@ -21,8 +21,8 @@ const fmt = (d) => d.toISOString().slice(0, 10);
   <div class="container" style="padding:40px 32px 8px">
     <nav class="pill-cats" aria-label="文章分類">
       <a href="/blog/" class="pill active">全部</a>
-      {Object.entries(CATEGORIES).map(([slug, name]) => (
-        <a href={`/blog/categories/${slug}/`} class="pill">{name}</a>
+      {CATEGORY_ORDER.map((slug) => (
+        <a href={`/blog/categories/${slug}/`} class="pill">{CATEGORIES[slug]}</a>
       ))}
     </nav>
   </div>
