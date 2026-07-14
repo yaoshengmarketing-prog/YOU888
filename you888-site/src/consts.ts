@@ -9,7 +9,26 @@ export const SITE = {
   // 登入／註冊的目標網址（引流 CTA）—— 之後換成正式網址
   loginUrl: '#',
   registerUrl: '#',
+  // 官方 LINE 客服（換站時改這裡）
+  lineId: '@995bgwiv',
+  lineUrl: 'https://line.me/R/ti/p/@995bgwiv',
+  // 版權年份
+  year: 2026,
 };
+
+// 合作遊戲供應商（頁尾展示；換站時可增減）
+export const PROVIDERS = [
+  'bbin', 'BNG', 'bet365', '完美娛樂', 'ALLBET', 'SA Gaming',
+  'DreamGaming', 'KA Gaming', 'ifun Game', 'QTech', 'SUPER',
+];
+
+// 合法監理機構（原創介紹，暫不寫牌照號碼）
+export const LICENSES = [
+  { name: '馬爾他博弈管理局（MGA）', desc: '歐洲最具公信力的博弈監理之一，對資金隔離、遊戲公平性稽核與玩家保障有嚴格要求。' },
+  { name: '英國博弈委員會（UKGC）', desc: '以嚴謹的玩家保護、反詐防制與負責任博弈標準著稱。' },
+  { name: '菲律賓娛樂博弈公司（PAGCOR）', desc: '亞洲主要的博弈監理機構，規範線上博弈之合法營運。' },
+  { name: '英屬維京群島（BVI）', desc: '國際上常見的合法公司註冊地之一。' },
+];
 
 // 標準 8 大分類（順序 = 導覽列順序）。可原封不動複製到其他娛樂城站。
 // slug 為固定英文，網址 = /blog/categories/{slug}

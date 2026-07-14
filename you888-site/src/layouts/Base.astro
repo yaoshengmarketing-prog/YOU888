@@ -14,8 +14,25 @@ const {
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, SITE.url).href;
-const ogImage = image ? new URL(image, SITE.url).href : new URL('/images/banner-10.webp', SITE.url).href;
+const ogImage = image ? new URL(image, SITE.url).href : new URL('/images/banner-01.webp', SITE.url).href;
 const fullTitle = title ? `${title}｜${SITE.name}` : SITE.name;
+
+const orgLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: SITE.name,
+  alternateName: SITE.brand,
+  url: SITE.url,
+  logo: new URL('/images/banner-01.webp', SITE.url).href,
+  description: `${SITE.name}官方平台，提供體育投注、真人視訊、電子、捕魚與棋牌等多元遊戲。`,
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'customer support',
+    url: SITE.lineUrl,
+    availableLanguage: ['zh-Hant'],
+  },
+  sameAs: [SITE.lineUrl],
+};
 ---
 <!DOCTYPE html>
 <html lang={SITE.lang}>
@@ -36,6 +53,7 @@ const fullTitle = title ? `${title}｜${SITE.name}` : SITE.name;
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&display=swap" rel="stylesheet" />
+  <script type="application/ld+json" set:html={JSON.stringify(orgLd)} />
   {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
 </head>
 <body>

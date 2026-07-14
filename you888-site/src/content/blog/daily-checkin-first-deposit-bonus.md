@@ -4,8 +4,8 @@ description: "YOU888 娛樂城的每日簽到、首存最高加碼 18,888 怎麼
 category: "promotions"
 tags: ["優惠活動", "每日簽到", "首存加碼", "流水"]
 pubDate: 2026-07-11
-cover: "/images/banner-14.webp"
-coverAlt: "YOU888 娛樂城 首存加碼 贈送高達 18,888"
+cover: "/images/banner-02.webp"
+coverAlt: "YOU888 娛樂城 首存連續3天 立即領取200%獎勵"
 author: "YOU888 編輯部"
 faq:
   - q: "每日簽到要連續嗎？中斷會怎樣？"
