@@ -2,7 +2,7 @@
 export const SITE = {
   name: 'YOU888 娛樂城',
   brand: 'YOU888',
-  url: 'https://you888.netlify.app',
+  url: 'https://you888.com.tw',
   blogTitle: 'YOU888 娛樂誌',
   blogDesc: 'YOU888 娛樂城官方部落格：平台指南、註冊與帳號、APP與手機版、優惠活動、存款與出金、遊戲玩法、安全查核、客服與常見問題，手把手教你玩得安心、領好領滿。',
   lang: 'zh-Hant-TW',
