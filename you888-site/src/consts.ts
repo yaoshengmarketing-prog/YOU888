@@ -66,7 +66,7 @@ export const CATEGORY_INTRO: Record<string, string> = {
   'support': '登入失敗、優惠沒收到、存款未到帳、出金延遲、交易被銀行攔截、帳號凍結…這裡專門處理「異常與疑難排解」，並整理客服聯絡方式與常見錯誤解法。',
 };
 
-// 分類底下的「支柱／Hub 頁」入口（目前只有存款與出金有全個）
+// 分類底下的「支柱／Hub 頁」入口（目前只有存款與出金有兩個）
 export const CATEGORY_HUBS: Record<string, { label: string; href: string; desc: string }[]> = {
   'deposit-withdraw': [
     { label: '存款教學總整理', href: '/deposit-guide/', desc: '各種存款方式、到帳時間、限額與驗證，一頁看懂。' },

@@ -29,4 +29,3 @@ const blog = defineCollection({
 });
 
 export const collections = { blog };
-
